@@ -8,6 +8,8 @@ A principal inovação reside na integração de modelos de Inteligência Artifi
 
 Status do Projeto
 
+Link de acesso ao Google Drive com os modelos do projeto: https://drive.google.com/drive/folders/1nyEKjBbY5FArdrsnZQ_AeMBmG19zGjfo?usp=drive_link
+
 Este projeto é um Produto Mínimo Viável (MVP) validado, conforme detalhado no TCC.
 
 Funcionalidades Principais:
