@@ -1,7 +1,7 @@
 body {
     font-family: Verdana, Geneva, sans-serif;
-    background: #f4f4f9; /* Fundo claro */
-    color: #333333; /* Texto escuro */
+    background: #f4f4f9; /* Fundo */
+    color: #333333; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,7 +16,7 @@ body {
     border-radius: 12px;
     width: 100%;
     max-width: 750px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Sombra mais suave */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
     display: flex;
     flex-direction: column;
     gap: 25px;
@@ -24,7 +24,7 @@ body {
 
 h1 {
     text-align: center;
-    color: #007bff; /* Azul de destaque */
+    color: #007bff; 
     font-size: 2.2em;
     margin-bottom: 10px;
 }
@@ -36,7 +36,7 @@ h1 {
     gap: 15px;
 }
 
-/* Estilos do Botão de Engrenagem e Modal */
+/* Botão Engrenagem - Modal */
 #settings-btn {
     position: fixed;
     top: 20px;

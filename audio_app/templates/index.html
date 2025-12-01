@@ -5,10 +5,8 @@
     <link rel="stylesheet" href="/static/audio_app/style.css">
 </head>
 <body>
-    <!-- Botão de Configurações -->
     <button id="settings-btn">⚙️</button>
 
-    <!-- Modal de Configurações de Acessibilidade -->
     <div id="settings-modal" class="modal-hidden">
         <div class="accessibility-controls">
             <h2>⚙️ Configurações de Acessibilidade</h2>
@@ -80,7 +78,7 @@
     </div>
 
     <script>
-        // --- Lógica do Modal de Configurações ---
+        //Lógica do Modal de Configurações
         const settingsBtn = document.getElementById("settings-btn");
         const settingsModal = document.getElementById("settings-modal");
         const closeSettingsBtn = document.getElementById("close-settings-btn");
@@ -93,8 +91,6 @@
             settingsModal.classList.add("modal-hidden");
         });
 
-        // --- Lógica de Acessibilidade ---
-
         // Variáveis de Acessibilidade
         const transcriptElement = document.getElementById("transcript");
         const translationElement = document.getElementById("translation");
@@ -105,7 +101,6 @@
         const bgColorControl = document.getElementById("bg-color");
         const textAlignControl = document.getElementById("text-align");
 
-        // Configurações Padrão
         const defaultSettings = {
             fontSize: '1.0',
             fontFamily: 'Verdana, Geneva, sans-serif',
@@ -130,7 +125,6 @@
             const savedSettings = localStorage.getItem('accessibilitySettings');
             const settings = savedSettings ? JSON.parse(savedSettings) : defaultSettings;
 
-            // Aplicar valores aos controles
             fontSizeControl.value = settings.fontSize;
             fontFamilyControl.value = settings.fontFamily;
             textColorControl.value = settings.textColor;
@@ -141,10 +135,8 @@
         }
 
         function applySettings(settings) {
-            // Atualizar o valor do slider
             fontSizeValue.textContent = `${settings.fontSize}x`;
 
-            // Aplicar estilos diretamente aos elementos de transcrição/tradução
             const elements = [transcriptElement, translationElement];
             elements.forEach(el => {
                 el.style.fontSize = `${settings.fontSize}em`;
@@ -155,17 +147,14 @@
             });
         }
 
-        // Event Listeners para salvar e aplicar as configurações
         fontSizeControl.addEventListener('input', saveSettings);
         fontFamilyControl.addEventListener('change', saveSettings);
         textColorControl.addEventListener('change', saveSettings);
         bgColorControl.addEventListener('change', saveSettings);
         textAlignControl.addEventListener('change', saveSettings);
 
-        // Carregar as configurações ao carregar a página
         window.addEventListener('load', loadSettings);
 
-        // --- Lógica de Gravação Existente ---
 
         let mediaRecorder;
         let audioChunks = [];
@@ -174,10 +163,9 @@
         const btn = document.getElementById("record-btn");
         const indicator = document.getElementById("recording-indicator");
 
-        // Inicializa os textos e aplica as configurações iniciais
         transcriptElement.textContent = "(O texto transcrito aparecerá aqui)";
         translationElement.textContent = "(A tradução aparecerá aqui)";
-        loadSettings(); // Garante que as configurações são aplicadas no carregamento
+        loadSettings(); 
 
         btn.addEventListener("click", async () => {
             if (!isRecording) {
@@ -205,7 +193,7 @@
                 mediaRecorder.stop();
                 isRecording = false;
                 btn.textContent = "Iniciando Processamento...";
-                btn.disabled = true; // Desabilita o botão durante o processamento
+                btn.disabled = true; 
                 indicator.classList.remove("active");
             }
         });
@@ -231,7 +219,6 @@
             .then(data => {
                 transcriptElement.textContent = data.transcript || "(Nenhuma transcrição recebida)";
                 translationElement.textContent = data.translation || "(Nenhuma tradução recebida)";
-                // Reaplicar as configurações de acessibilidade após a atualização do conteúdo
                 applySettings(JSON.parse(localStorage.getItem('accessibilitySettings') || JSON.stringify(defaultSettings)));
             })
             .catch(err => {
@@ -241,7 +228,7 @@
             })
             .finally(() => {
                 btn.textContent = "Iniciar Gravação";
-                btn.disabled = false; // Reabilita o botão
+                btn.disabled = false; 
             });
         }
     </script>
